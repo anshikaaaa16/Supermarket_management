@@ -1,0 +1,58 @@
+#=======================MARKETING MANAGEMENT SYSTEM=====================
+items=[]
+while True:
+    print("**Welcome to the supermarket**")
+    print("1. Add new items  \n2. View items \n3. Purchasing \n4. Exit")
+    op=input("Enter the number of your choice=")
+    if (op=="1"):
+        print("**Add items**")
+        print("Adding new items")
+        item={}
+        item['name']= input('Item name:')
+        while True:
+            try:
+                item['qty']=int(input("Item quantity:"))
+                break
+            except ValueError:
+                print("Enter numeric figure")
+        while True:
+            try:
+                item['price']= int(input("Price:"))
+                break
+            except ValueError:
+                print("Enter numeric figure")
+        print("Item has been successfully added")
+        items.append(item)
+    elif(op=="2"):
+        print("View items")
+        print("Total items are:", len(items))
+        while(len(items)!=0):
+            print("Available items:")
+            for item in items:
+                for key, value in item.items():
+                    print(key, ':', value)
+            break;
+    elif(op=="3"):
+        print("**Purchase items***")
+        print(items)
+        pur_item= input("Which item do you want to purchase? Enter name:")
+        for item in items:
+            if pur_item.lower()==item['name'].lower():
+                if(item['qty']!=0):
+                    print("Pay", item['price'], 'at checkout counter')
+                    
+                    item.pop(input("key: "))
+                    item.pop(input("key: "))
+                    item.pop(input("key: "))
+                    
+                    
+                    
+                    
+                    
+                else:
+                    print("item out of stock")
+    elif (op=="4"):
+        print("**Exited***")
+        break
+    else:
+        print("You have entered invalid option")
